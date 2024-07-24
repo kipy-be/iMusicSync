@@ -1,0 +1,73 @@
+﻿<Window x:Class="IMusicSync.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IMusicSync"
+        mc:Ignorable="d"
+        Title="iMusicSync by kipy" Height="600" Width="1000" Background="#333333">
+    <Grid
+        Margin="10">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="0" Grid.Column="0"
+            VerticalContentAlignment="Center"
+            Foreground="#FFFFFF"
+            Content="Lecteur :"
+        />
+
+        <ComboBox
+            Grid.Row="0" Grid.Column="2"
+            ItemsSource="{Binding Devices}"
+            SelectedItem="{Binding SelectedDevice}"
+        >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Label}" VerticalContentAlignment="Center" Height="35" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Button
+            Grid.Row="2"
+            Grid.ColumnSpan="3"
+            Height="35"
+            Content="Charger liste"
+            IsEnabled="{Binding IsLoadEnabled}"
+            Command="{Binding LoadPlayListCommand}" />
+
+        <ProgressBar Grid.Row="4" Grid.ColumnSpan="3" />
+
+        <TextBox
+            x:Name="tbLogs"
+            Grid.Row="6"
+            Grid.ColumnSpan="3"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto"
+            VerticalAlignment="Stretch"
+            IsReadOnly="True"
+            Background="#EEEEEE"
+            Text="{Binding Logs, Mode=OneWay}"
+            TextChanged="Logs_TextChanged" />
+    </Grid>
+</Window>
