@@ -46,13 +46,30 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Button
+        <Grid
             Grid.Row="2"
-            Grid.ColumnSpan="3"
-            Height="35"
-            Content="Charger liste"
-            IsEnabled="{Binding IsLoadEnabled}"
-            Command="{Binding LoadPlayListCommand}" />
+            Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Button
+                Grid.Column="0"
+                Height="35"
+                Content="Charger playlist iTunes"
+                IsEnabled="{Binding IsLoadEnabled}"
+                Command="{Binding LoadPlayListCommand}" />
+
+            <Button
+                Grid.Column="2"
+                Height="35"
+                Content="Charger titres"
+                IsEnabled="{Binding IsLoadEnabled}"
+                Command="{Binding LoadTitlesCommand}" />
+        </Grid>
+        
 
         <ProgressBar Grid.Row="4" Grid.ColumnSpan="3" />
 

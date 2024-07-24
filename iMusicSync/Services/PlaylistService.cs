@@ -48,6 +48,21 @@ namespace IMusicSync.Services
             return playlist;
         }
 
+        public List<PlaylistItem> ToPlaylist(string[] filesUri)
+        {
+            var playlist = new List<PlaylistItem>();
+
+            foreach (string fileUri in filesUri)
+            {
+                playlist.Add(new PlaylistItem
+                {
+                    FilePath = fileUri
+                });
+            }
+
+            return playlist;
+        }
+
         private static MD5 _md5 = MD5.Create();
 
         public Task<TitleSyncResult> SyncTitleToLocation(PlaylistItem title, string outputDir)
