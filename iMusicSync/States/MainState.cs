@@ -136,7 +136,7 @@ namespace IMusicSync.States
             }
 
             AddLogLine();
-            AddLogLine($"Terminé. {syncCount} titre{(syncCount > 1 ? "s" : "")} synchronisé{(syncCount > 1 ? "s" : "")}, {skipCount} déjà synchronisé{(skipCount > 1 ? "s" : "")}, {errorCount} erreur{(errorCount > 1 ? "s" : "")})");
+            AddLogLine($"Terminé. {syncCount} titre{(syncCount > 1 ? "s" : "")} synchronisé{(syncCount > 1 ? "s" : "")}, {skipCount} déjà synchronisé{(skipCount > 1 ? "s" : "")}, {errorCount} erreur{(errorCount > 1 ? "s" : "")}.");
 
             UpdateDeviceSize();
         }
