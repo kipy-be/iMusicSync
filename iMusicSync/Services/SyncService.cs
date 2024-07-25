@@ -121,6 +121,13 @@ namespace iMusicSync.Services
                 return result;
             }
 
+            if (Path.GetExtension(title.FilePath).ToLower() == ".m4p")
+            {
+                result.IsSuccess = false;
+                result.Message = "Le fichier est protégé par des DRM";
+                return result;
+            }
+
             Stream fileStream = null;
 
             try
