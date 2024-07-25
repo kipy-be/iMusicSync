@@ -71,7 +71,12 @@
         </Grid>
         
 
-        <ProgressBar Grid.Row="4" Grid.ColumnSpan="3" />
+        <ProgressBar
+            Grid.Row="4" Grid.ColumnSpan="3"
+            Minimum="0"
+            Maximum="100"
+            Value="{Binding Progress}"
+        />
 
         <TextBox
             x:Name="tbLogs"
