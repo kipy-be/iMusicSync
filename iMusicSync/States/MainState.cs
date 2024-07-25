@@ -15,6 +15,7 @@ namespace IMusicSync.States
     public class MainState : Notifiable
     {
         public readonly PlaylistService _playlistService = new();
+        public readonly SyncService _syncService = new();
 
         private DeviceInfo _selectedDevice;
         private bool _isBusy = false;
@@ -32,7 +33,7 @@ namespace IMusicSync.States
             LoadPlayListCommand = new RelayCommand(LoadPlayList);
             LoadTitlesCommand = new RelayCommand(LoadTitles);
 
-            _playlistService.OnSyncProgress += OnlaylistSyncProgress;
+            _syncService.OnSyncProgress += OnlaylistSyncProgress;
         }
 
         public ICommand LoadPlayListCommand { get; set; }
@@ -173,7 +174,7 @@ namespace IMusicSync.States
                     }
 
                     AddLogLine($"Synchronisation du contenu...");
-                    _playlistService.SyncTitles(playlist, SelectedDevice.Path);
+                    _syncService.SyncTitles(playlist, SelectedDevice.Path);
                 }
             }
             catch
@@ -209,7 +210,7 @@ namespace IMusicSync.States
                     }
 
                     AddLogLine($"Synchronisation du contenu...");
-                    _playlistService.SyncTitles(playlist, SelectedDevice.Path);
+                    _syncService.SyncTitles(playlist, SelectedDevice.Path);
                 }
             }
             catch
