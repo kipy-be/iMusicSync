@@ -34,6 +34,7 @@ namespace IMusicSync.States
             LoadTitlesCommand = new RelayCommand(LoadTitles);
 
             _syncService.OnSyncProgress += OnlaylistSyncProgress;
+            _syncService.OnSyncError += OnPlaylistSyncError;
         }
 
         public ICommand LoadPlayListCommand { get; set; }
@@ -138,6 +139,12 @@ namespace IMusicSync.States
 
                 UpdateDeviceSize();
             }
+        }
+
+        private void OnPlaylistSyncError(object sender, SyncErrorEventArgs e)
+        {
+            AddLogLine($@"Erreur fatale: ""{e.Message}""");
+            UpdateDeviceSize();
         }
 
         public void LoadPlayList()
